@@ -12,3 +12,4 @@ Esta API foi projetada para gerenciar sobreviventes e recursos em um mundo pós-
 | Editar Localização do Sobrevivente | PUT         | /survivors/location |
 | Sinalizar Infectado                | POST        | /survivors/infected |
 | Trocar Suplementos                 | POST        | /survivors/exchange |
+| Buscar Sumário                     | GET         | /summary            |
