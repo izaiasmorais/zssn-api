@@ -39,9 +39,9 @@ app.register(fastifySwaggerUI, {
 app.register(getSurvivors);
 app.register(getSurvivorById);
 app.register(registerSurvivor);
-app.register(editSurvivorLocation)
-app.register(flagInfected)
+app.register(editSurvivorLocation);
+app.register(flagInfected);
 
-app.listen({ port: Number(process.env.SERVER_PORT) || 3333 }).then(() => {
+app.listen({ port: Number(port) }).then(() => {
 	console.log(`HTTP server running at ${port}`);
 });
