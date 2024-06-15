@@ -15,19 +15,10 @@ export async function editSurvivorLocation(app: FastifyInstance) {
 		{
 			schema: {
 				tags: ["survivors"],
-				summary: "Edit a survivor's	 location",
+				summary: "Edit a survivor's location",
 				body: EditSurvivorLocationSchema,
 				response: {
-					200: z.object({
-						id: z.string().uuid(),
-						name: z.string(),
-						age: z.number(),
-						gender: z.string(),
-						latitude: z.number(),
-						longitude: z.number(),
-						points: z.number(),
-						infected: z.boolean(),
-					}),
+					204: z.null(),
 					404: z.object({
 						message: z.string(),
 					}),
@@ -42,16 +33,15 @@ export async function editSurvivorLocation(app: FastifyInstance) {
 			});
 
 			if (!survivor) {
-				reply.status(404).send({ message: "Survivor not found" });
-				return;
+				return reply.status(404).send({ message: "Survivor not found" });
 			}
 
-			const updatedSurvivor = await prisma.survivor.update({
+			await prisma.survivor.update({
 				where: { id },
 				data: { latitude, longitude },
 			});
 
-			reply.status(200).send(updatedSurvivor);
+			return reply.status(204).send();
 		}
 	);
 }
