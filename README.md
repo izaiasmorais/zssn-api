@@ -1,17 +1,14 @@
-### Regras de Negócio
+### Documentação
 
-- [ ] It should be able to get projects within a organization;
-- [ ] It should be able to create a new project (name, url, description);
-- [ ] It should be able to update a project (name, url, description);
-- [ ] It should be able to delete a project;
+Esta API foi projetada para gerenciar sobreviventes e recursos em um mundo pós-apocalíptico. Abaixo estão os detalhes das funcionalidades disponíveis, incluindo os métodos HTTP e rotas para cada funcionalidade.
 
-### Permissions table
+### Rotas
 
-| Functionality            | Http Methods  | Route          |
-| ------------------------ | ------------- | -------------- |
-| Get Survivors            |               |                |
-| Get Survivor By Id       |               |                |
-| Register Survivor        |               |                |
-| Edit Survivor Location   |               |                |
-| Flag Infected            |               |                |
-| Exchange Supplies        |               |                |
+| Funcionalidade                     | Método Http | Rotas               |
+| ---------------------------------- | ----------- | ------------------- |
+| Buscar Sobreviventes               | GET         | /survivors          |
+| Registrar Sobrevivente             | POST        | /survivors          |
+| Buscar Sobrevivente por id         | GET         | /survivors/:id      |
+| Editar Localização do Sobrevivente | PUT         | /survivors/location |
+| Sinalizar Infectado                | POST        | /survivors/infected |
+| Trocar Suplementos                 | POST        | /survivors/exchange |

@@ -8,6 +8,11 @@ import {
 	validatorCompiler,
 	ZodTypeProvider,
 } from "fastify-type-provider-zod";
+import { getSurvivors } from "./routes/get-survivors";
+import { getSurvivorById } from "./routes/get-survivor-by-id";
+import { registerSurvivor } from "./routes/register-survivor";
+import { editSurvivorLocation } from "./routes/edit-survivor-location";
+import { flagInfected } from "./routes/flag-infected";
 
 const port = process.env.PORT || "3333";
 
@@ -31,7 +36,11 @@ app.register(fastifySwaggerUI, {
 	routePrefix: "/docs",
 });
 
-// app.register(getProfile)
+app.register(getSurvivors);
+app.register(getSurvivorById);
+app.register(registerSurvivor);
+app.register(editSurvivorLocation)
+app.register(flagInfected)
 
 app.listen({ port: Number(process.env.SERVER_PORT) || 3333 }).then(() => {
 	console.log(`HTTP server running at ${port}`);
