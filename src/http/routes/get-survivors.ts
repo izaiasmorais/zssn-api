@@ -11,20 +11,23 @@ export async function getSurvivors(app: FastifyInstance) {
 				tags: ["survivors"],
 				summary: "Get all survivors information",
 				response: {
-					200: z.object({
-						survivors: z.array(
-							z.object({
-								id: z.string().uuid(),
-								name: z.string(),
-								gender: z.string(),
-								age: z.number(),
-								latitude: z.number(),
-								longitude: z.number(),
-								points: z.number(),
-								infected: z.boolean(),
-							})
-						),
-					}),
+					200: z.array(
+						z.object({
+							id: z.string().uuid(),
+							name: z.string(),
+							gender: z.string(),
+							age: z.number(),
+							latitude: z.number(),
+							longitude: z.number(),
+							infectionReports: z.number(),
+							infected: z.boolean(),
+							water: z.number(),
+							food: z.number(),
+							medication: z.number(),
+							ammunition: z.number(),
+							points: z.number(),
+						})
+					),
 				},
 			},
 		},
@@ -40,10 +43,15 @@ export async function getSurvivors(app: FastifyInstance) {
 					longitude: true,
 					points: true,
 					infected: true,
+					ammunition: true,
+					food: true,
+					medication: true,
+					water: true,
+					infectionReports: true,
 				},
 			});
 
-			return { survivors };
+			return survivors;
 		}
 	);
 }
