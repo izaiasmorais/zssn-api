@@ -13,6 +13,7 @@ import { getSurvivorById } from "./routes/get-survivor-by-id";
 import { registerSurvivor } from "./routes/register-survivor";
 import { editSurvivorLocation } from "./routes/edit-survivor-location";
 import { flagInfected } from "./routes/flag-infected";
+import { getSummary } from "./routes/get-summary";
 
 const port = process.env.PORT || 3333;
 
@@ -41,15 +42,20 @@ app.register(getSurvivorById);
 app.register(registerSurvivor);
 app.register(editSurvivorLocation);
 app.register(flagInfected);
+app.register(getSummary);
 
-const start = async () => {
-	try {
-		await app.listen({ port: Number(port), host: "0.0.0.0" });
-		app.log.info(`Server listening on port ${port}`);
-	} catch (err) {
-		app.log.error(err);
-		process.exit(1);
-	}
-};
+app.listen({ port: Number(port) }).then(() => {
+	console.log(`Server running on port ${port}`);
+});
 
-start();
+// const start = async () => {
+// 	try {
+// 		await app.listen({ port: Number(port), host: "0.0.0.0" });
+// 		app.log.info(`Server listening on port ${port}`);
+// 	} catch (err) {
+// 		app.log.error(err);
+// 		process.exit(1);
+// 	}
+// };
+
+// start();

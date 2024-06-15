@@ -40,7 +40,6 @@ export async function flagInfected(app: FastifyInstance) {
 		async (request, reply) => {
 			const { id } = request.body;
 
-			// Verifica se o sobrevivente existe
 			const survivor = await prisma.survivor.findUnique({
 				where: { id },
 			});
@@ -50,7 +49,6 @@ export async function flagInfected(app: FastifyInstance) {
 				return;
 			}
 
-			// Incrementa a contagem de infectionReports
 			const updatedSurvivor = await prisma.survivor.update({
 				where: { id },
 				data: {

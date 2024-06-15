@@ -14,25 +14,23 @@ export async function getSurvivorById(app: FastifyInstance) {
 					id: z.string(),
 				}),
 				response: {
-					200: z.object({
-						survivor: z
-							.object({
-								id: z.string().uuid(),
-								name: z.string(),
-								gender: z.string(),
-								age: z.number(),
-								latitude: z.number(),
-								longitude: z.number(),
-								infectionReports: z.number(),
-								infected: z.boolean(),
-								water: z.number(),
-								food: z.number(),
-								medication: z.number(),
-								ammunition: z.number(),
-								points: z.number(),
-							})
-							.nullable(),
-					}),
+					200: z
+						.object({
+							id: z.string().uuid(),
+							name: z.string(),
+							gender: z.string(),
+							age: z.number(),
+							latitude: z.number(),
+							longitude: z.number(),
+							infectionReports: z.number(),
+							infected: z.boolean(),
+							water: z.number(),
+							food: z.number(),
+							medication: z.number(),
+							ammunition: z.number(),
+							points: z.number(),
+						})
+						.nullable(),
 				},
 			},
 		},
@@ -46,7 +44,7 @@ export async function getSurvivorById(app: FastifyInstance) {
 				},
 			});
 
-			return { survivor };
+			return survivor;
 		}
 	);
 }
