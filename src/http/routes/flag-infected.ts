@@ -8,7 +8,7 @@ const FlagInfectedSchema = z.object({
 });
 
 export async function flagInfected(app: FastifyInstance) {
-	app.withTypeProvider<ZodTypeProvider>().post(
+	app.withTypeProvider<ZodTypeProvider>().put(
 		"/survivors/flag-infected",
 		{
 			schema: {
