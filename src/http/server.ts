@@ -44,18 +44,14 @@ app.register(editSurvivorLocation);
 app.register(flagInfected);
 app.register(getSummary);
 
-app.listen({ port: Number(port) }).then(() => {
-	console.log(`Server running on port ${port}`);
-});
+const start = async () => {
+	try {
+		await app.listen({ port: Number(port), host: "0.0.0.0" });
+		app.log.info(`Server listening on port ${port}`);
+	} catch (err) {
+		app.log.error(err);
+		process.exit(1);
+	}
+};
 
-// const start = async () => {
-// 	try {
-// 		await app.listen({ port: Number(port), host: "0.0.0.0" });
-// 		app.log.info(`Server listening on port ${port}`);
-// 	} catch (err) {
-// 		app.log.error(err);
-// 		process.exit(1);
-// 	}
-// };
-
-// start();
+start();
